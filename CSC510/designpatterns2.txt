@@ -1,0 +1,39 @@
+ADAPTER:
+
+1. The class being wrapped/adapted
+    http://www.google.com/codesearch#1oUPVh-C1Wg/trunk/gallery_remote/com/gallery/GalleryRemote/StatusUpdate.java&q=StatusUpdate&type=cs&exact_package=http://gallery.svn.sourceforge.net/svnroot/gallery&l=31
+    
+2. The adapter class
+    http://www.google.com/codesearch#1oUPVh-C1Wg/trunk/gallery_remote/com/gallery/GalleryRemote/StatusUpdateAdapter.java&q=adapter%20implements%20lang:%5Ejava$&l=31
+    
+3. A client
+    http://www.google.com/codesearch#1oUPVh-C1Wg/trunk/gallery_remote/com/gallery/GalleryRemote/GalleryComm3.java&q=StatusUpdateAdapter&type=cs&exact_package=http://gallery.svn.sourceforge.net/svnroot/gallery&l=623
+    
+4. Something that surprised you
+    The adapter and the original interface were written by the same developer. This may indicate lack of forethought.
+    
+SINGLETON:
+
+1. An instance creation method
+    http://www.google.com/codesearch#ErIFsFkniak/download/attachments/9166/SynchronizedSingleton.src.tar.gz%7CGk8GbwWo0fM/VanillaSingleton.java&q=VanillaSingleton&type=cs&exact_package=http://wiki.osuosl.org/download/attachments/9166/SynchronizedSingleton.src.tar.gz&l=10
+    
+2. A client
+    http://www.google.com/codesearch#ErIFsFkniak/download/attachments/9166/SynchronizedSingleton.src.tar.gz%7CGk8GbwWo0fM/Tester.java&q=singleton%20lang:%5Ejava$&type=cs&l=27
+    
+3. Something that surprised you
+    The singleton is instantiated automatically and not by any method.
+    
+ABSTRACT FACTORY:
+
+1. The abstract factory, and its factory method(s)
+    http://www.google.com/codesearch#BVITFSVRqWY/trunk/xgt2-2.4.5/modules/library/metadata/src/main/java/org/geotools/factory/AbstractFactory.java&q=abstractfactory%20lang:%5Ejava$&l=124
+    
+2. Two concrete factories, and their factory method(s)
+    http://www.google.com/codesearch#BVITFSVRqWY/trunk/xgt2-2.4.5/modules/library/metadata/src/main/java/org/geotools/factory/FactoryUsingVolatileDependencies.java&q=extends%20abstractfactory&exact_package=http://xtgeos.googlecode.com/svn&l=47
+    http://www.google.com/codesearch#BVITFSVRqWY/trunk/xgt2-2.4.5/modules/unsupported/geometryless/src/main/java/org/geotools/data/geometryless/BBOXDataStoreFactory.java&q=extends%20abstractfactory&exact_package=http://xtgeos.googlecode.com/svn&l=58
+    
+3. A client using the abstract factory
+    http://www.google.com/codesearch#BVITFSVRqWY/trunk/xgt2-2.4.5/modules/unsupported/geometryless/src/test/java/org/geotools/data/geometryless/JDBCDataStoreFactoryOnlineTest.java&q=JDBCDataStoreFactory&type=cs&exact_package=http://xtgeos.googlecode.com/svn&l=52
+    
+4. Something that surprised you
+    There are abstractions on top of the abstractions extending the abstract factory. AbstractAbstractFactoryFactory.

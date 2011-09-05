@@ -1,0 +1,167 @@
+	
+Unofficial
+Name:  Carson Lynn Holgate
+Student ID:  000767132
+Birthdate:   1989-12-17
+Print Date   :  2011-09-01
+                      - - - - -   Transfer Credits   - - - - -
+Transfer Credit from North Carolina State University
+Applied Toward Engineering Program
+  Course Trans GPA:     4.000  Transfer Totals :     14.00    14.00         58.331
+                        - - - - -   Test Credits   - - - - -
+Test Credits Applied Toward Physical & Math Sciences Program
+                                  2010 Spring Term
+CSC       116       Intro Comp - Java                 3.00     3.00 CR
+CSC       216       Prog Concepts-Java                3.00     3.00 CR
+    Test Trans GPA:     0.000  Transfer Totals :      6.00     6.00          0.000
+              - - - - -   Beginning of Undergraduate Record   - - - - -
+                                   2008 Fall Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Engr Unmatriculated Major
+Session  : Regular Academic Session
+BIO 181       Intro Bio Ecol/Div                4.00     4.00 CR
+BIO 183       Intro Bio Cell/Mol                4.00     4.00 CR
+CH  101       Chem Molecular Sci                3.00     3.00 CR
+CH  102       Gen Chem Lab                      1.00     1.00 CR
+CH  201       Chem-A Quanti Sci                 3.00     3.00 CR
+CH  202       Quant Chem Lab                    1.00     1.00 CR
+E   101       Intro Engineering                 1.00     1.00 A+       4.333
+E   115       Computing Environ                 1.00     1.00 S
+EC  201       Princ of Microecon                3.00     3.00 A       12.000
+ECE 109       Intro Comp Sys                    3.00     3.00 A+      12.999
+ENG 101       Acad Writing Rsch                 4.00     4.00 CR
+FL  295I      ST-Elem Chi Conv I                1.00     1.00 A+       4.333
+FLC 101       Element Chinese I                 3.00     3.00 A       12.000
+HON 202       Inquiry/Discov Lit                3.00     3.00 B-       8.001
+MA  141       Calculus I                        4.00     4.00 CR
+MA  241       Calculus II                       4.00     4.00 CR
+MA  341       Appl Diff Eq I                    3.00     3.00 B        9.000
+MEA 100       Earth Sys Science                 4.00     4.00 CR
+PY  205       Physics Engr Sci I                4.00     4.00 CR
+PY  208       Physics Egr Sci II                4.00     4.00 CR
+         TERM GPA :     3.686      TERM TOTALS :     58.00    58.00         62.666
+                    Semester Dean's List
+                                  2009 Spring Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Engineering-BS Major
+Session  : Regular Academic Session
+ECE 200       Intro Sig Circ Sys                4.00     4.00 A-      14.668
+ECE 209       Comp Sys Prog                     3.00     3.00 A       12.000
+FLC 102       Element Chinese II                3.00     3.00 A-      11.001
+HON 296C      Hon ST-Creat Pro S                3.00     3.00 A+      12.999
+MA  225       Found Advance Math                3.00     3.00 B        9.000
+PE  104       Swim Conditioning                 1.00     1.00 S
+         TERM GPA :     3.729      TERM TOTALS :     17.00    17.00         59.668
+                    Semester Dean's List
+                                   2009 Fall Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Engineering-BS Major
+Session  : Regular Academic Session
+COM 110       Public Speaking                   3.00     3.00 A-      11.001
+ECE 211       Electric Circuits                 4.00     4.00 B+      13.332
+ECE 212       Fund Logic Design                 3.00     3.00 A-      11.001
+FLC 201       Intermed Chinese I                3.00     3.00 A-      11.001
+MA  407       Mod Algebra Majors                3.00     3.00 B        9.000
+    REQ DESIGNATION : Completed Honors Requirements
+MA  444       Problem Solving                   1.00     1.00 S
+    REQ DESIGNATION : Completed Honors Requirements
+PE  279       Yoga                              1.00     0.00 W
+         TERM GPA :     3.458      TERM TOTALS :     17.00    17.00         55.335
+                    Semester Dean's List
+                                  2010 Spring Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Science-BS Major
+Session  : Regular Academic Session
+FLC 202       Interm Chinese II                 3.00     3.00 B        9.000
+HON 341       Time Travel                       3.00     3.00 B+       9.999
+MA  437       Appl of Algebra                   3.00     3.00 A-      11.001
+MA  591       Special Topics                    3.00     3.00 A-      11.001
+     Course Topic(s): Quantum Computation
+         TERM GPA :     3.417      TERM TOTALS :     12.00    12.00         41.001
+                                 2010 Summer Term 1
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Science-BS Major
+Session  : Summer 10 Week Session
+CSC 316       Data Struct CSC                   3.00     3.00 A+      12.999
+         TERM GPA :     4.000      TERM TOTALS :      3.00     3.00         12.999
+                                   2010 Fall Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Science-BS Major
+Session  : Regular Academic Session
+CSC 230       C/Software Tools                  3.00     3.00 A-      11.001
+ENG 331       Commun Engr & Tech                3.00     3.00 A       12.000
+FLC 301       Interm Chinese III                3.00     3.00 A-      11.001
+MA  421       Intro Probability                 3.00     3.00 C        6.000
+MA  522       Computer Algebra                  3.00     3.00 A-      11.001
+PE  258       Basic Rockclimbing                1.00     1.00 S
+         TERM GPA :     3.400      TERM TOTALS :     16.00    16.00         51.003
+                    Semester Dean's List
+                                  2011 Spring Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Science-BS Major
+Session  : Regular Academic Session
+CSC 246       Conc Op Sys CSC                   3.00     3.00 A+      12.999
+CSC 333       Automata Gram Comp                3.00     3.00 A-      11.001
+FLC 302       Interm Chinese IV                 3.00     3.00 A-      11.001
+MA  425       Math Analysis I                   3.00     3.00 B+       9.999
+MA  722       Computer Alg II                   3.00     3.00 B+       9.999
+MA  792       SP Topics Algebra                 3.00     3.00 A       12.000
+     Course Topic(s): Adv Program for Mathematics
+         TERM GPA :     3.722      TERM TOTALS :     18.00    18.00         66.999
+                    Semester Dean's List
+                                   2011 Fall Term
+Program  : Physical & Math Sciences
+Plan     : Mathematics-BS Major
+Program  : Engineering
+Plan     : Computer Science-BS Major
+Session  : Regular Academic Session
+ADN 111       2-D Design                        3.00
+CSC 499       Indep Research CSC                3.00
+CSC 510       Software Engineerg                3.00
+CSC 562       Computer Graphics                 3.00
+MA  426       Math Analysis II                  3.00
+ST  370       Prob & Stat-Engr                  3.00
+         TERM GPA :     0.000      TERM TOTALS :      0.00     0.00          0.000
+Undergraduate Career Totals
+         CUM  GPA :     3.676      CUM  TOTALS :    161.00   161.00        408.002
+Unofficial
+Name:  Carson Lynn Holgate
+Student ID:  000767132
+Birthdate:   1989-12-17
+            - - - - -   Beginning of Non Degree Status Record   - - - - -
+                               2005 Second Summer Term
+Program  : Non Degree Studies
+Plan     : Undergrad Studies Non-Degree
+Session  : Summer Five Week Session
+MA  111       Precalc Alg & Trig                3.00     3.00 A+      12.999
+         TERM GPA :     4.000      TERM TOTALS :      3.00     3.00         12.999
+                                 2006 Summer Term 2
+Program  : Non Degree Studies
+Plan     : Undergrad Studies Non-Degree
+Session  : Summer Five Week Session
+GN  411       Princ of Genetics                 4.00     4.00 A       16.000
+         TERM GPA :     4.000      TERM TOTALS :      4.00     4.00         16.000
+                                 2008 Summer Term 2
+Program  : Non Degree Studies
+Plan     : Undergrad Studies Non-Degree
+Session  : Summer Five Week Session
+MA  242       Calculus III                      4.00     4.00 A+      17.332
+MA  405       Lin Alg & Matrices                3.00     3.00 A       12.000
+         TERM GPA :     4.000      TERM TOTALS :      7.00     7.00         29.332
+Non Degree Status Career Totals
+         CUM  GPA :     4.000      CUM  TOTALS :     14.00    14.00         58.331
+

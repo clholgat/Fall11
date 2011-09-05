@@ -1,0 +1,50 @@
+OBSERVER:
+
+From GDB
+
+1. Where observers are attached/detached
+http://www.google.com/codesearch#t4cUIrRdV2U/gnu/mingw/gdb-6.3-2.tar.bz2%7Cqh95no3mTcA/gdb-6.3-2/gdb/observer.c&q=observer&type=cs&l=107
+
+static struct observer *generic_observer_attach (struct observer_list **subject, generic_observer_notification_ftype * notify, void *data)
+{
+  struct observer_list *observer_list = xalloc_observer_list_node ();
+
+  observer_list->next = *subject;
+  observer_list->observer->notify = notify;
+  observer_list->observer->data = data;
+  *subject = observer_list;
+
+  return observer_list->observer;
+}
+
+2. Where observers are notified
+http://www.google.com/codesearch#t4cUIrRdV2U/gnu/mingw/gdb-6.3-2.tar.bz2%7Cqh95no3mTcA/gdb-6.3-2/gdb/observer.c&q=observer&type=cs&l=155
+3. One concrete observer
+
+4. Something that surprised you (maybe it differed from the pattern as described here)
+    Code contains a memory leak. When observer is detached memory is never deallocated.
+    
+STRATEGY:
+
+1. The abstract strategy class / interface
+    http://www.google.com/codesearch#VMmQAbzbzIw/strategy.py&ct=rc&cd=3&q=Strategy
+    
+2. Two concrete strategies
+    1. http://www.google.com/codesearch#VMmQAbzbzIw/strategy.py&q=Strategy&l=170
+    2. http://www.google.com/codesearch#VMmQAbzbzIw/strategy.py&q=Strategy&l=364
+    
+3. A client
+    http://www.google.com/codesearch#7hW4YKXBNQg/trunk/plonesrc/iw.fss/iw/fss/tests/test_configuration.py&q=configuration%20storage_strategy&type=cs&l=144
+4. Something that surprised you
+    The second strategy in 2 actually inherits from the first.
+    
+STATE:
+
+1. The abstract state class
+    http://www.google.com/codesearch#ZpJ-joQyotQ/trunk/streme/src/streme/lang/ast/analysis/kcfa/State.java&q=State&type=cs&exact_package=http://streme.googlecode.com/svn&l=6
+2. A concrete state class
+    http://www.google.com/codesearch#ZpJ-joQyotQ/trunk/streme/src/streme/lang/ast/analysis/ipda/Ipda.java&q=extends%20State&type=cs&exact_package=http://streme.googlecode.com/svn&l=142
+3. One location where the state is changed
+    http://www.google.com/codesearch#ZpJ-joQyotQ/trunk/streme/src/streme/lang/test/KcfaTests.java&q=State&type=cs&exact_package=http://streme.googlecode.com/svn&l=31
+4. Something that surprised you
+    State is not a commonly used design pattern.
