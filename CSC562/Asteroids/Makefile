@@ -1,13 +1,16 @@
 all: asteroids
 
 
-asteroids: asteroids.o tardis.o
-	gcc -lGL -lglut -lGLU -std=c++0x asteroids.o tardis.o -o client
+asteroids: asteroids.o tardis.o asteroid.o
+	gcc -lGL -lglut -lGLU -std=c++0x asteroids.o tardis.o asteroid.o -o client
 
-asteroids.o: asteroids.cpp asteroids.h tardish.h
+asteroids.o: asteroids.cpp asteroids.h tardis.h asteroid.h
 	gcc -lGL -lglut -lGLU -std=c++0x asteroids.cpp -c
 	
-tardis.o: tardis.cpp tardis.h tardish.h
+asteroid.o: asteroid.cpp asteroid.h
+	gcc -lGL -lglut -lGLU -std=c++0x asteroid.cpp -c	
+	
+tardis.o: tardis.cpp tardis.h
 	gcc -lGL -lglut -lGLU -std=c++0x tardis.cpp -c
     
 clean: 
