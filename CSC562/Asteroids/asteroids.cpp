@@ -12,6 +12,7 @@
 
 #include "tardis.h"
 #include "asteroid.h"
+#include "dalek.h"
 #include "asteroids.h"
 
 //Triangles in counter clockwise order
@@ -37,6 +38,7 @@ void drawScene(){
 	
 	drawAsteroid();
 	drawTardis();
+	drawDalek();
 	
 	glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

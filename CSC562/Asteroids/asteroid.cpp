@@ -8,7 +8,7 @@
 
 void drawPole(float pole[3], float points[][3]){
 	for( int i = 0; i < 8; i++){
-		glBegin( GL_TRIANGLES );
+		glBegin( GL_LINE_LOOP );
     	glColor3f(1, 0, 0);
     	glVertex3fv(points[i]);
     	glVertex3fv(points[(i+1)%8]);
