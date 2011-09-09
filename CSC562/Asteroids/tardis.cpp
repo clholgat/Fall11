@@ -1,3 +1,9 @@
+#ifdef _M_IX86
+#include <windows.h>
+#else
+#include <iostream>
+#endif
+
 #include "tardis.h"
 #include "asteroids.h"
 #include "dalek.h"
@@ -74,7 +80,8 @@ void drawTardis(){
     int pointLen = tardisLen/4;
     for(int i = 0; i < pointLen; i++){
     	glBegin( GL_LINE_LOOP );
-    	glColor3f(0.129, 0.024, 0.392);
+    	//glColor3f(0.129, 0.024, 0.392);
+    	glColor3f(1, 0, 0);
     	for(int j = 0; j < 4; j++){
     		glVertex3fv(tardisRect[(i*4)+j]);
     	}

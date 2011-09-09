@@ -1,3 +1,9 @@
+#ifdef _M_IX86
+#include <windows.h>
+#else
+#include <iostream>
+#endif
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
@@ -53,6 +59,7 @@ void drawSph(float top[][3], float bot[][3]){
 		midBot = {(bot[j][0] + bot[mod(j-1,9)][0])/2, (bot[j][2] + bot[mod(j-1,9)][2])/2};
 		slopeX = (TOP-BOT)/(midTop[0]-midBot[0]);
 		slopeZ = (TOP-BOT)/(midTop[1]-midBot[1]);
+		
 		for(int k = 0; k < 3; k++){
 			x = midBot[0] + (1+cent[k])*(1/slopeX);
 			z = midBot[1] + (1+cent[k])*(1/slopeZ);
@@ -65,16 +72,101 @@ void drawSph(float top[][3], float bot[][3]){
 }
 
 void drawHead(){
+	glPushMatrix();
 	glTranslatef(0, TOP+0.1, 0.05);
 	glutWireSphere(0.52, 10, 10);
-	glTranslatef(0, -(TOP+0.1), -0.05);
+	//glTranslatef(0, -(TOP+0.1), -0.05);
+	glPopMatrix();
 	
+	glPushMatrix();
 	glTranslatef(0, TOP-0.3, 0.05);
 	glRotatef(90, 1, 0, 0);
 	glutWireTorus(0.02, 0.6, 10, 10);
 	glTranslatef(0, 0, 0.25);
 	glutWireTorus(0.02, 0.69, 10, 10);
+	glPopMatrix();
 }
+
+void drawThing(float len, float scale){
+	float armBot[][3] = {
+		{1, 0, 0.5},
+		{0.5, 0, 1},
+		{-0.5, 0, 1},
+		{-1, 0, 0.5},
+		{-1, 0, -0.5},
+		{-0.5, 0, -1},
+		{0.5, 0, -1},
+		{1, 0, -0.5},
+	};
+	
+	float armTop[8][3] = {
+		{1, len, -0.5},
+		{0.5, len, -1},
+		{-0.5, len, -1},
+		{-1, len, -0.5},
+		{-1, len, 0.5},
+		{-0.5, len, 1},
+		{0.5, len, 1},
+		{1, len, 0.5},
+	};
+	
+	for(int i = 0; i < 8; i++){
+		for(int j = 0; j < 3; j += 2){
+			armTop[i][j] *= scale;
+			armBot[i][j] *= scale;
+		}
+	}
+	
+	int j = 0;
+	for(int i = 0; i < 8; i++){
+		j = 7-i;
+		glBegin(GL_LINE_LOOP);
+		glColor3f(1, 0 , 0);
+		glVertex3fv(armTop[i]);
+		glVertex3fv(armTop[mod(i+1,8)]);
+		glVertex3fv(armBot[mod(j-1,8)]);
+		glVertex3fv(armBot[j]);
+		glEnd();
+	}
+	
+}
+
+void drawArms(){
+	glPushMatrix();
+	glTranslatef(-0.2, 0.3, -0.2);
+	glRotatef(110, -1, 1, 0);
+	drawThing(1.2, 0.03);
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0.2, 0.3, -0.2);
+	glRotatef(130, -1, -1, 0);
+	drawThing(1.2, 0.03);
+	glTranslatef(0, 1.2, 0);
+	glutWireSphere(0.1, 10, 10);
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0.3, 1.3, 0);
+	glRotatef(30, 0, 0, -1);
+	drawThing(0.15, 0.1);
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(-0.3, 1.3, 0);
+	glRotatef(30, 0, 0, 1);
+	drawThing(0.15, 0.1);
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0, 0.8, -0.8);
+	glRotatef(100, 1, 0, 0);
+	drawThing(0.4, 0.03);
+	glTranslatef(0, 0, 0);
+	glutWireSphere(0.1, 10, 10);
+	glPopMatrix();
+}
+
 
 void drawDalek(){
 	float dalekBase[][3] = {
@@ -122,6 +214,7 @@ void drawDalek(){
 		
 	glPushMatrix();
 	glTranslatef(2, 0, 0);
+	glScalef(0.9, 0.9, 0.9);
 	glRotatef(getAngle(), .2, 1, .2);
 	
 	drawBase(dalekBase, BOT);

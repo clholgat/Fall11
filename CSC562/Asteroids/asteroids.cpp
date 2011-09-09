@@ -31,6 +31,7 @@ void rotate(int deg){
 
 
 void drawScene(){
+
 	glMatrixMode( GL_MODELVIEW );		// Setup model transformations
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glEnable( GL_CULL_FACE );
@@ -48,6 +49,13 @@ void drawScene(){
     glutSwapBuffers();
 }
 	
+	
+void handle_menu(int ID){
+	switch(ID){
+		case 0:
+			exit(0);
+	}
+}
 
 int main(int argc, char *argv[]){
     glutInit(&argc, argv);
@@ -56,6 +64,11 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(600, 300);
     glutCreateWindow("Asteroids Art");
     glutDisplayFunc( drawScene );
+    
+    glutCreateMenu(handle_menu);
+    glutAddMenuEntry("Quit", 0);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+    
     glutTimerFunc(25, rotate, 0);
     glutMainLoop();			// Enter GLUT main loop
 	return 1;
