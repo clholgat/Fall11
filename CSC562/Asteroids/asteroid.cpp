@@ -6,6 +6,7 @@
 
 #include "asteroid.h"
 #include "asteroids.h"
+#include "draw.h"
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -14,8 +15,9 @@
 
 void drawPole(float pole[3], float points[][3]){
 	for( int i = 0; i < 8; i++){
-		glBegin( GL_LINE_LOOP );
-    	glColor3f(1, 0, 0);
+		glBegin( GL_TRIANGLES );
+		glNormal3fv(norm(points[i], points[(i+1)%8], pole));
+    	glColor3f(0.804+0.01*i, 0.522-0.01*i, 0.247+0.01*i);
     	glVertex3fv(points[i]);
     	glVertex3fv(points[(i+1)%8]);
     	glVertex3fv(pole);
@@ -23,7 +25,7 @@ void drawPole(float pole[3], float points[][3]){
    	}
 }
 
-void drawAsteroid(){
+void drawAsteroid(Props Ast, int ang){
 /*	Original copy of these points
 	float tweak[][3] = {
 		{0.717, 0.717, 0},
@@ -122,11 +124,10 @@ void drawAsteroid(){
     	{0.577, 0.577, -0.577}
     };
 
-    
-    
+    glMatrixMode( GL_MODELVIEW );		// Setup model transformations
     glPushMatrix();
-    glTranslatef(-2, 0, 0);
-    glRotatef(getAngle(), 0, 1, 0);	
+    glTranslatef(Ast->pos[0], Ast->pos[1], 0);
+    glRotatef(ang, Ast->wonky->axis[0], Ast->wonky->axis[1], Ast->wonky->axis[2]);	
     	
     drawPole(poles[0], xpos);
     drawPole(poles[1], ypos);
@@ -136,6 +137,6 @@ void drawAsteroid(){
     drawPole(poles[5], zneg);
     
     glPopMatrix();
-	
+	glFlush();				// Flush OpenGL queue
            
 }
