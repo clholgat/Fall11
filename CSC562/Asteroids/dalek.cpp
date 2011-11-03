@@ -14,7 +14,42 @@
 #define BOT -1
 #define TOP 0.8
 
-void drawBase(float base[][3], float y){
+Dalek::Dalek(){
+
+	dalekBase = {
+		{-0.6, BOT, 1},
+		{-.8, BOT, 0.7},
+		{-.8, BOT, 0},
+		{-0.6, BOT, -0.6},
+		{0, BOT, -1},
+		{0.6, BOT, -0.6},
+		{.8, BOT, -0},
+		{.8, BOT, 0.7},
+		{.6, BOT, 1},
+	};
+	
+	dalekTop =  {
+		{0.6, TOP, 1},
+		{.8, TOP, 0.7},
+		{.8, TOP, 0},
+		{0.6, TOP, -0.6},
+		{0, TOP, -1},
+		{-0.6, TOP, -0.6},
+		{-.8, TOP, -0},
+		{-.8, TOP, 0.7},
+		{-.6, TOP, 1},
+	};
+	
+	float scalef = .4;
+	for(int i = 0; i < 9; i++){
+		for(int j = 0; j < 3; j += 2){
+			dalekTop[i][j] = dalekTop[i][j]*scalef;
+		}
+	}
+
+}
+
+void Dalek::drawBase(float base[][3], float y){
 	float pole[3] = {0, y, 0};
 	for(int i = 0; i < 9; i++){
 		glBegin(GL_TRIANGLES);
@@ -27,26 +62,26 @@ void drawBase(float base[][3], float y){
 	}
 }
 
-int mod(int num, int mod){
+int Dalek::mod(int num, int mod){
 	return (num + mod)%mod;
 }
 
-void drawSides(float top[][3], float bot[][3]){
+void Dalek::drawSides(){
 	int j = 0;
 	for(int i = 0; i < 9; i++){
 		j = 8-i;
 		glBegin(GL_QUADS);
 		glColor3f(1, 0 , 0);
-		glNormal3fv(norm(bot[mod(j-1, 9)], top[mod(i+1,9)], top[i]));
-		glVertex3fv(bot[j]);
-		glVertex3fv(bot[mod(j-1, 9)]);
-		glVertex3fv(top[mod(i+1,9)]);
-		glVertex3fv(top[i]);
+		glNormal3fv(norm(dalekBase[mod(j-1, 9)], dalekTop[mod(i+1,9)], dalekTop[i]));
+		glVertex3fv(dalekBase[j]);
+		glVertex3fv(dalekBase[mod(j-1, 9)]);
+		glVertex3fv(dalekTop[mod(i+1,9)]);
+		glVertex3fv(dalekTop[i]);
 		glEnd();
 	}
 }
 		
-void drawSph(float top[][3], float bot[][3]){
+void Dalek::drawSph(float top[][3], float bot[][3]){
 	float cent[3] = {-0.8, -0.5, -0.2};
 	double midTop[2];
 	double midBot[2];
@@ -73,7 +108,7 @@ void drawSph(float top[][3], float bot[][3]){
 	}
 }
 
-void drawHead(){
+void Dalek::drawHead(){
 	glPushMatrix();
 	glTranslatef(0, TOP+0.1, 0.05);
 	glutSolidSphere(0.52, 10, 10);
@@ -90,7 +125,7 @@ void drawHead(){
 	
 }
 
-void drawThing(float len, float scale){
+void Dalek::drawThing(float len, float scale){
 	float armBot[][3] = {
 		{1, 0, 0.5},
 		{0.5, 0, 1},
@@ -155,7 +190,7 @@ void drawThing(float len, float scale){
 	
 }
 
-void drawArms(){
+void Dalek::drawArms(){
 	glPushMatrix();
 	glTranslatef(-0.2, 0.3, -0.2);
 	glRotatef(110, -1, 1, 0);
@@ -192,59 +227,16 @@ void drawArms(){
 }
 
 
-void drawDalek(){
-	float dalekBase[][3] = {
-		{-0.6, BOT, 1},
-		{-.8, BOT, 0.7},
-		{-.8, BOT, 0},
-		{-0.6, BOT, -0.6},
-		{0, BOT, -1},
-		{0.6, BOT, -0.6},
-		{.8, BOT, -0},
-		{.8, BOT, 0.7},
-		{.6, BOT, 1},
-	};
+void Dalek::draw(){
 	
-	/*float dalekTop[][3] = {
-		{-0.5, TOP, 0.8},
-		{-0.75, TOP, 0.5},
-		{-0.75, TOP, 0},
-		{-0.6, TOP, -0.5},
-		{0, TOP, -0.75},
-		{0.6, TOP, -0.5},
-		{0.75, TOP, 0},
-		{0.75, TOP, 0.5},
-		{.5, TOP, 0.8},
-	};*/
-	
-	float dalekTop[][3] =  {
-		{0.6, TOP, 1},
-		{.8, TOP, 0.7},
-		{.8, TOP, 0},
-		{0.6, TOP, -0.6},
-		{0, TOP, -1},
-		{-0.6, TOP, -0.6},
-		{-.8, TOP, -0},
-		{-.8, TOP, 0.7},
-		{-.6, TOP, 1},
-	};
-	
-	float scalef = .4;
-	for(int i = 0; i < 9; i++){
-		for(int j = 0; j < 3; j += 2){
-			dalekTop[i][j] = dalekTop[i][j]*scalef;
-		}
-	}
 	
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glTranslatef(2, 0, 0);
-	glScalef(0.9, 0.9, 0.9);
-	glRotatef(getAngle(), 0, 1, 0);
+	applyTrans();
 	
 	drawBase(dalekBase, BOT);
 	drawBase(dalekTop, TOP);
-	drawSides(dalekTop, dalekBase);
+	drawSides();
 	drawSph(dalekTop, dalekBase);
 	drawHead();
 	drawArms();
