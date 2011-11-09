@@ -19,5 +19,8 @@ typedef struct props {
 	int ang;
 } *Props;
 
+Tardis getTardis();
+void idle();
+
 
 #endif

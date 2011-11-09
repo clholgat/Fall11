@@ -5,19 +5,70 @@
 #endif
 
 #include "tardis.h"
-#include "asteroids.h"
-#include "dalek.h"
-#include "draw.h"
+#include "model.h"
+#include "asteroid.h"
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
 
+Shot::Shot(){
+	return;
+}
 
-int tardisLen = 44;
+void Shot::draw(){
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glTranslatef(pos[0], pos[1], 0);
+	glPointSize(5);
+	glBegin(GL_POINTS);
+	glColor3f(1, 1, 1);
+	glNormal3f(0, 0, 1);
+	glVertex3f(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+}
 
-float tardisRect[][3] = {
+void Shot::init(Tardis *tardis){
+	movDir = (*tardis).movDir;
+	dir = (*tardis).dir;
+	pos[0] = (*tardis).pos[0];
+	pos[1] = (*tardis).pos[1];
+	spinRate = 0;
+	axis[0] = 0;
+	axis[1] = 0;
+	axis[2] = 1;
+}
+		
+bool Tardis::checkShots(Asteroid *a){
+	for(itS = shots.begin(); itS != shots.end(); itS++){
+		if((pow((**itS).pos[0]-(*a).pos[0],2)+pow((**itS).pos[1]-(*a).pos[1],2)) <= pow((*a).rad,2)){
+			delete *itS;
+			shots.erase(itS);
+			return true;
+		}
+	}
+}
+
+bool Tardis::checkTardis(Asteroid *a){
+	if((pow(pos[0]-(*a).pos[0], 2)+pow(pos[1]-(*a).pos[1],2)) <= pow(1.2+(*a).rad, 2)){
+		return true;
+	}
+}
+		
+Tardis::Tardis(){
+	return;
+}
+
+void Tardis::init(){
+	tardisLen = 44;
+	velocity = 0;
+	movDir = 0;
+	dir = 90;
+	
+	tardisRect = {
 	{0.66, 1, 0.66},	//front
 	{0.66, -1, 0.66},
 	{-0.66, -1, 0.66},
@@ -72,9 +123,13 @@ float tardisRect[][3] = {
 	{-0.5, 1.2, 0.5},
 	{-0.5, 1.2, -0.5},
 	{0.5, 1.2, -0.5}
-};
+	};
+	
+	pos[0] = 0;
+	pos[1] = 0;
+}
 
-void drawPointer(){
+void Tardis::drawPointer(){
 	glColor3f(0.2, 0.2, 0.2);
 	glutSolidTorus(0.05, 1.2, 20, 20);
 	glBegin(GL_TRIANGLES);
@@ -86,18 +141,20 @@ void drawPointer(){
 	glEnd();
 }
 
-void drawTardis(Props Tardis){
+void Tardis::draw(){
 	glMatrixMode( GL_MODELVIEW );		// Setup model transformations
 
   	glPushMatrix();
-  	
-  	glTranslatef(Tardis->pos[0], Tardis->pos[1], 0);
-  	glRotatef(Tardis->dir-90,0, 0, 1);
-  	
+  	glTranslatef(pos[0], pos[1], 0);
+  	glRotatef(dir-90, 0, 0, 1);
   	drawPointer();
-  	glRotatef(90, 1, 0, 0);
+  	glPopMatrix();
+  	
+  	glPushMatrix();
+  	glTranslatef(pos[0], pos[1], 0);
+  	glRotatef(ang, axis[0], axis[1], 0);
     glScalef(0.9, 0.9, 0.9);
-    glRotatef(getAngle(), .2, 1, .2);
+    
     
     int pointLen = tardisLen/4;
     for(int i = 0; i < pointLen; i++){
@@ -111,24 +168,106 @@ void drawTardis(Props Tardis){
     	glEnd();
     }
     glPopMatrix();
+    
+    for(itS = shots.begin(); itS != shots.end(); itS++){
+    	(**itS).draw();
+    }
+    
+    
 	glFlush();				// Flush OpenGL queue
+}
+
+void Tardis::shoot(){
+	if(shots.size() == 4){
+		return;
+	}
+	int vel = velocity;
+	float movx = vel*cos(movDir*0.0175);
+	float movy = vel*sin(movDir*0.0175);
+	float xx = 2*cos(dir*0.0175);
+	float yy = 2*sin(dir*0.0175);
+	float xs = 3*cos(dir*0.0175);
+	float ys = 3*sin(dir*0.0175);
+	float mag = sqrt((xx+movx)*(xx+movx)+(yy+movy)*(yy+movy));
+	float mags = sqrt((xs+movx)*(xs+movx)+(ys+movy)*(ys+movy));
+	float normx = (movx+xx)/mag;
+	float normy = (movy+yy)/mag;
+	float normxs = (movx+xs)/mags;
+	float normys = (movy+ys)/mags;
+	float delta = 0.001;
 	
+	Shot *newShot = new Shot();
+	(*newShot).modelInit(rand());
+	(*newShot).init(this);
+	(*newShot).dir = acos(normxs)*57.296, 
+	(*newShot).velocity = mag*0.5;
+	if(normxs < 0+delta && normys < 0+delta){
+		(*newShot).dir = -(*newShot).dir;
+	}else if(normxs > 0-delta && normys < 0+delta){
+		(*newShot).dir = -(*newShot).dir;
+	}
+	(*newShot).movDir = (*newShot).dir;
+	shots.push_back(newShot);
+	return;
 
 }
 
-void drawShots(Props Shots[4]){
-	glMatrixMode(GL_MODELVIEW);
-	for(int i = 0; i < 4; i++){
-		if(Shots[i] == NULL){
-			continue;
-		}
-		glPointSize(5);
-		glBegin(GL_POINTS);
-		glColor3f(1, 1, 1);
-		glNormal3f(0, 0, 1);
-		glVertex3f(Shots[i]->pos[0], Shots[i]->pos[1], 0);
-		glEnd();
+void Tardis::accelerate(){
+	int vel = velocity;
+	float movx = vel*cos((movDir)*0.0175);
+	float movy = vel*sin((movDir)*0.0175);
+	float xx = 3*cos(dir*0.0175);
+	float yy = 3*sin(dir*0.0175);
+	//float xs = 3*cos(dir*0.0175);
+	//float ys = 3*sin(dir*0.0175);
+	float mag = sqrt((xx+movx)*(xx+movx)+(yy+movy)*(yy+movy));
+	//float mags = sqrt((xs+movx)*(xs+movx)+(ys+movy)*(ys+movy));
+	float normx = (movx+xx)/mag;
+	float normy = (movy+yy)/mag;
+	//float normxs = (movx+xs)/mags;
+	//float normys = (movy+ys)/mags;
+	float delta = 0.001;
+	
+	movDir = acos(normx)*57.296;
+	if(normx < 0+delta && normy < 0+delta){
+		movDir = -movDir;
+	}else if(normx > 0-delta && normy < 0+delta){
+		movDir = -movDir;
+	}
+	velocity = mag;
+	if(velocity > 10){
+		velocity = 10;
 	}
 }
-		
+
+void Tardis::right(){
+	dir -= 15;
+	dir += 360;
+	dir %= 360;
+}
+
+void Tardis::left(){
+	dir += 15;
+	dir %= 360;
+}
+
+void Tardis::update(){
+	pos[0] += (velocity/4)*cos(movDir*0.017);
+	pos[1] += (velocity/4)*sin(movDir*0.017);
+	float friction = 1;
+	if(velocity >= friction){
+		velocity -= friction;
+	}
+	if(velocity < friction){
+		velocity = 0;
+	}
+	ang += rate;
+	ang %= 360;
+	
+	for(itS = shots.begin(); itS != shots.end(); itS++){
+		(**itS).update();
+	}
+	
+	wrap();
+}
 	
